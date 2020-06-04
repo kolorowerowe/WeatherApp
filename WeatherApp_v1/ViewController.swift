@@ -10,11 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private var apiWeather = ApiWeather()
+    private var weatherResult : [WeatherData] = []
+    
+    @IBOutlet weak var cityName: UITextField!
+    @IBOutlet weak var tempDay: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        apiWeather.fetchWeather(){[weak self] (data: [WeatherData]) in
+            self?.weatherResult = data
+            DispatchQueue.main.async {
+                self?.cityName.text = data[0].city
+                self?.tempDay.text = String(data[0].tempDay)
+            }
+        }
+        
     }
 
 
 }
-

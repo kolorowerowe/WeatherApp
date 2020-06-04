@@ -24,21 +24,57 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0OB-Vs-5ub">
+                                <rect key="frame" x="149" y="109" width="250" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="City" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KN1-9f-kIy">
+                                <rect key="frame" x="15" y="109" width="113" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Temp Day" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Onk-wf-7Mb">
+                                <rect key="frame" x="15" y="163" width="113" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FqG-5E-Z33">
+                                <rect key="frame" x="149" y="163" width="250" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3q3-kA-BIW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="MYf-Ky-69q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3q3-kA-BIW" secondAttribute="trailing" constant="30" id="NG0-Di-Auh"/>
                             <constraint firstItem="3q3-kA-BIW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="PT2-KA-en5"/>
+                            <constraint firstItem="0OB-Vs-5ub" firstAttribute="leading" secondItem="KN1-9f-kIy" secondAttribute="trailing" constant="25" id="Qbl-8s-ZTo"/>
+                            <constraint firstItem="KN1-9f-kIy" firstAttribute="top" secondItem="3q3-kA-BIW" secondAttribute="bottom" constant="25" id="Yf2-DC-cqR"/>
+                            <constraint firstItem="0OB-Vs-5ub" firstAttribute="top" secondItem="3q3-kA-BIW" secondAttribute="bottom" constant="25" id="db6-Di-svr"/>
                             <constraint firstItem="3q3-kA-BIW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="gk2-V3-DMI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3q3-kA-BIW" secondAttribute="trailing" constant="15" id="myR-g3-XQj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0OB-Vs-5ub" secondAttribute="trailing" constant="15" id="qcf-87-njM"/>
                             <constraint firstItem="3q3-kA-BIW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="tNA-i5-IBr"/>
+                            <constraint firstItem="KN1-9f-kIy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yu8-gH-Tm8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cityName" destination="0OB-Vs-5ub" id="ibX-9l-jSO"/>
+                        <outlet property="tempDay" destination="FqG-5E-Z33" id="osq-iw-tuq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="107.8125"/>
         </scene>
     </scenes>
 </document>
