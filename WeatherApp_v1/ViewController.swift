@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cityName: UITextField!
     @IBOutlet weak var tempDay: UITextField!
+    @IBOutlet weak var pressure: UITextField!
+    @IBOutlet weak var windSpeed: UITextField!
+    @IBOutlet weak var weatherDesc: UITextField!
+    @IBOutlet weak var icon: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,11 @@ class ViewController: UIViewController {
             self?.weatherResult = data
             DispatchQueue.main.async {
                 self?.cityName.text = data[0].city
-                self?.tempDay.text = String(data[0].tempDay)
+                self?.tempDay.text = String(data[0].temp)
+                self?.pressure.text = String(data[0].pressure)
+                self?.windSpeed.text = String(data[0].windSpeed)
+                self?.weatherDesc.text = String(data[0].main)
+                self?.icon.loadFromUrl(url: URL(string: "https://openweathermap.org/img/w/" + data[0].icon + ".png")!)
             }
         }
         

@@ -9,7 +9,11 @@
 import Foundation
 
 struct WeatherData {
-    var tempDay = 0.0
+    var main = ""
+    var icon = ""
+    var temp = 0.0
+    var pressure = 0.0
+    var windSpeed = 0.0
     var city = ""
 }
 
@@ -18,7 +22,11 @@ class ApiWeather {
         
         var weatherResult : [WeatherData] = []
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
-        let weatherApiUrl = URL(string: "https://samples.openweathermap.org/data/2.5/forecast/daily?id=524901&appid=0")
+        
+        let city = "Krakow"
+        let apiKey = "cf65a17c32c5f1524267174091d6548b"
+        let weatherApiUrl = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=" + apiKey)
+        
         let task = session.dataTask(with: weatherApiUrl!){ (data, respose, error) in
             let json = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
             
@@ -31,12 +39,26 @@ class ApiWeather {
             let dailyDataList = json["list"] as! [AnyObject]
             let dailyDataElement = dailyDataList[0]
             
-            let temp = dailyDataElement["temp"] as! [String: Any]
-            let tempDay = temp["day"] as! Double
+            let mainInfo = dailyDataElement["main"] as! [String: Any]
+            let temp = mainInfo["temp"] as! Double
+            weatherDataElement.temp = temp
+            let pressure = mainInfo["pressure"] as! Double
+            weatherDataElement.pressure = pressure
             
-            weatherDataElement.tempDay = tempDay
+            let windInfo = dailyDataElement["wind"] as! [String: Any]
+            let windSpeed = windInfo["speed"] as! Double
+            weatherDataElement.windSpeed = windSpeed
+            
+            let weatherInfo = dailyDataElement["weather"] as! [AnyObject]
+            let weatherInfoMain = weatherInfo[0]
+            let main = weatherInfoMain["main"] as! String
+            weatherDataElement.main = main
+            let icon = weatherInfoMain["icon"] as! String
+            weatherDataElement.icon = icon
+            
             
             weatherResult.append(weatherDataElement)
+           
             completion(weatherResult)
         }
         
