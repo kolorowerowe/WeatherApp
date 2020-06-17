@@ -12,13 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let splitViewController = window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        guard
+            let window = window,
+            let splitViewController = window.rootViewController as? UISplitViewController,
+            let leftNavController = splitViewController.viewControllers.first as? UINavigationController
+            else {fatalError()}
+        leftNavController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        leftNavController.topViewController?.navigationItem.leftItemsSupplementBackButton = true
         splitViewController.delegate = self
         return true
     }

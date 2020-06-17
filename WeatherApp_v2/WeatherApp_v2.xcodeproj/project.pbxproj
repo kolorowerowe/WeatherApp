@@ -13,6 +13,8 @@
 		3F154A91249942870088A135 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F154A8F249942870088A135 /* Main.storyboard */; };
 		3F154A93249942890088A135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F154A92249942890088A135 /* Assets.xcassets */; };
 		3F154A96249942890088A135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F154A94249942890088A135 /* LaunchScreen.storyboard */; };
+		3F24307B249A7DF2008DCAAD /* ApiWeatherFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24307A249A7DF2008DCAAD /* ApiWeatherFetch.swift */; };
+		3F24307D249A8129008DCAAD /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24307C249A8129008DCAAD /* extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		3F154A92249942890088A135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F154A95249942890088A135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F154A97249942890088A135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F24307A249A7DF2008DCAAD /* ApiWeatherFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiWeatherFetch.swift; sourceTree = "<group>"; };
+		3F24307C249A8129008DCAAD /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				3F154A92249942890088A135 /* Assets.xcassets */,
 				3F154A94249942890088A135 /* LaunchScreen.storyboard */,
 				3F154A97249942890088A135 /* Info.plist */,
+				3F24307A249A7DF2008DCAAD /* ApiWeatherFetch.swift */,
+				3F24307C249A8129008DCAAD /* extensions.swift */,
 			);
 			path = WeatherApp_v2;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F24307D249A8129008DCAAD /* extensions.swift in Sources */,
+				3F24307B249A7DF2008DCAAD /* ApiWeatherFetch.swift in Sources */,
 				3F154A8E249942870088A135 /* DetailViewController.swift in Sources */,
 				3F154A8C249942870088A135 /* MasterViewController.swift in Sources */,
 				3F154A8A249942870088A135 /* AppDelegate.swift in Sources */,
