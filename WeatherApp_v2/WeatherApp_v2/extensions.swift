@@ -11,6 +11,10 @@ import UIKit
 
 
 extension UIImageView {
+    func loadByIcon(icon: String){
+        self.loadFromUrl(url: URL(string: "https://openweathermap.org/img/w/" + icon + ".png")!)
+    }
+    
     func loadFromUrl(url: URL) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
@@ -22,5 +26,12 @@ extension UIImageView {
             }
         }
     }
+}
+
+extension Double {
+    var formatAsTemp: String {
+        return String(format: "%.0f", self) + "\u{00B0}C"
+    }
+    
 }
 

@@ -10,7 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    public var detailItem = "AAAA"
+  
+    var cityNameRequest = ""
     
     private var apiWeather = ApiWeather()
     
@@ -32,7 +33,7 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        apiWeather.fetchWeather(){[weak self] (data: [WeatherData]) in
+        apiWeather.fetchWeather(cityNameRequest, maxDay){[weak self] (data: [WeatherData]) in
             self?.weatherResult = data
             self?.UpdateController()
         }
@@ -48,11 +49,11 @@ class DetailViewController: UIViewController {
     func UpdateController(){
         DispatchQueue.main.async {
             self.cityName.text = self.weatherResult[self.day].city
-            self.tempDay.text = String(self.weatherResult[self.day].temp)
+            self.tempDay.text = self.weatherResult[self.day].temp.formatAsTemp
             self.pressure.text = String(self.weatherResult[self.day].pressure)
             self.windSpeed.text = String(self.weatherResult[self.day].windSpeed)
             self.weatherDesc.text = String(self.weatherResult[self.day].main)
-            self.icon.loadFromUrl(url: URL(string: "https://openweathermap.org/img/w/" + self.weatherResult[self.day].icon + ".png")!)
+            self.icon.loadByIcon(icon: self.weatherResult[self.day].icon)
             self.dateTime.text = self.weatherResult[self.day].dateTime
             
             if self.day == 0 {

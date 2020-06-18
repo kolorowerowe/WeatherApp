@@ -15,6 +15,8 @@
 		3F154A96249942890088A135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F154A94249942890088A135 /* LaunchScreen.storyboard */; };
 		3F24307B249A7DF2008DCAAD /* ApiWeatherFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24307A249A7DF2008DCAAD /* ApiWeatherFetch.swift */; };
 		3F24307D249A8129008DCAAD /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24307C249A8129008DCAAD /* extensions.swift */; };
+		3F24307F249AA131008DCAAD /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24307E249AA131008DCAAD /* AddCityViewController.swift */; };
+		3F8CC99A249B676F00B23085 /* CityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CC999249B676F00B23085 /* CityCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		3F154A97249942890088A135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F24307A249A7DF2008DCAAD /* ApiWeatherFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiWeatherFetch.swift; sourceTree = "<group>"; };
 		3F24307C249A8129008DCAAD /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		3F24307E249AA131008DCAAD /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
+		3F8CC999249B676F00B23085 /* CityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				3F154A97249942890088A135 /* Info.plist */,
 				3F24307A249A7DF2008DCAAD /* ApiWeatherFetch.swift */,
 				3F24307C249A8129008DCAAD /* extensions.swift */,
+				3F24307E249AA131008DCAAD /* AddCityViewController.swift */,
+				3F8CC999249B676F00B23085 /* CityCellView.swift */,
 			);
 			path = WeatherApp_v2;
 			sourceTree = "<group>";
@@ -145,8 +151,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F24307D249A8129008DCAAD /* extensions.swift in Sources */,
+				3F24307F249AA131008DCAAD /* AddCityViewController.swift in Sources */,
 				3F24307B249A7DF2008DCAAD /* ApiWeatherFetch.swift in Sources */,
 				3F154A8E249942870088A135 /* DetailViewController.swift in Sources */,
+				3F8CC99A249B676F00B23085 /* CityCellView.swift in Sources */,
 				3F154A8C249942870088A135 /* MasterViewController.swift in Sources */,
 				3F154A8A249942870088A135 /* AppDelegate.swift in Sources */,
 			);

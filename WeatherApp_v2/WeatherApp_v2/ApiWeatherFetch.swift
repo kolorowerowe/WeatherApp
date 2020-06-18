@@ -21,18 +21,17 @@ struct WeatherData {
 }
 
 class ApiWeather {
-    private var days = 5
+
     
     private var elementsPerDay = 8
     
-    func fetchWeather (completion: @escaping ((_ data: [WeatherData]) -> Void)){
+    func fetchWeather (_ city: String, _ maxDays: Int, completion: @escaping ((_ data: [WeatherData]) -> Void)){
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd MMM YYYY"
         
         var weatherResult : [WeatherData] = []
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
         
-        let city = "Krakow"
         let apiKey = "cf65a17c32c5f1524267174091d6548b"
         let weatherApiUrl = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=" + apiKey)
         
@@ -47,7 +46,7 @@ class ApiWeather {
             
             let dailyDataList = json["list"] as! [AnyObject]
             
-            for i in stride(from: 0, to: self.days * self.elementsPerDay, by: self.elementsPerDay){
+            for i in stride(from: 0, to: maxDays * self.elementsPerDay, by: self.elementsPerDay){
                 
                 let dailyDataElement = dailyDataList[i]
                 

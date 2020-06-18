@@ -8,11 +8,21 @@
 
 import UIKit
 
+struct CityWeather {
+    var name = ""
+    var icon = ""
+    var temp = 0.0
+}
+
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var citiesForecast = [CityWeather]()
+    
+    private var apiWeather = ApiWeather()
+    
 
+    private var weatherResult : [WeatherData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +35,32 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+       initCities()
+    }
+    
+    func initCities(){
+        addCityWeather("Paris")
+        addCityWeather("Warsaw")
+        addCityWeather("Tokio")
+        addCityWeather("Miami")
+
+    }
+    
+    func addCityWeather(_ city: String) {
+        apiWeather.fetchWeather(city, 1){[weak self] (data: [WeatherData]) in
+            let result = data
+            
+            var cityWeather: CityWeather = CityWeather()
+            cityWeather.name = city
+            cityWeather.temp = result[0].temp
+            cityWeather.icon = result[0].icon
+            
+            self?.citiesForecast.insert(cityWeather, at: 0)
+            let indexPath = IndexPath(row: 0, section: 0)
+            self?.tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,19 +70,22 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert("Krakow", at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        addCityWeather("Krakow")
+//        let indexPath = IndexPath(row: 0, section: 0)
+//        tableView.insertRows(at: [indexPath], with: .automatic)
     }
+    
+    
+  
 
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! String
+                let cityWeather = citiesForecast[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.cityNameRequest = cityWeather.name
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -60,14 +99,18 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return citiesForecast.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CityCellView
 
-        let object = objects[indexPath.row] as! String
-        cell.textLabel!.text = object.description
+        let cityForecast = citiesForecast[indexPath.row]
+        
+        cell.cityName?.text = cityForecast.name
+        cell.temp?.text = cityForecast.temp.formatAsTemp
+        cell.icon?.loadByIcon(icon: cityForecast.icon)
+        
         return cell
     }
 
@@ -78,7 +121,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            citiesForecast.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
